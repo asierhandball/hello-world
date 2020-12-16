@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean install package'
+                sh 'mvn -B -f /var/lib/jenkins/workspace/Pipeline_Test/pom.xml clean install package'
             }
         }
         stage("Dependency Check") {
