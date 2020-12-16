@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean install package'
+            }
+        }
         stage("Dependency Check") {
             steps {
                 dependencyCheckAnalyzer datadir: '',
@@ -18,11 +23,7 @@ pipeline {
                 zipExtensions: ''
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
