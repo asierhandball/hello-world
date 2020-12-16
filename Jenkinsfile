@@ -4,7 +4,7 @@ pipeline {
 
         stage('Build') {
             steps {
-              withMaven {
+              withMaven () {
                 sh 'mvn -B -f /var/lib/jenkins/workspace/Pipeline_Test/pom.xml clean install package'
               }
             }
