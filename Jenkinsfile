@@ -13,9 +13,14 @@ pipeline {
                 '''
             }
         }
-        stage('Build') {
+        stage('Build v1') {
             steps {
-                sh 'mvn -B -f /var/lib/jenkins/workspace/Pipeline_Test/pom.xml clean install package'
+                build 'D_o_K_CI'
+            }
+        }
+        stage('Build v2') {
+            steps {
+                build 'Deploy_on_Kubernetes_CD'
             }
         }
         stage("Dependency Check") {
