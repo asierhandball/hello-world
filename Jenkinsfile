@@ -12,14 +12,14 @@ pipeline {
                     echo "M2_HOME = ${M2_HOME}"
                 '''
             }
-        }
+        }/*
         stage('Build v1') {
             steps {
                 build 'D_o_K_CI'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                 
             }
-        }
+        }*/
         stage ('Anchore Image Scanning') {
             steps {
                 sh '''
