@@ -23,20 +23,15 @@ pipeline {
                 build 'Deploy_on_Kubernetes_CD'
             }
         }
-        stage("Dependency Check") {
+        stage ('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                dependencyCheckAnalyzer datadir: '',
-                hintsFile: '',
-                includeCsvReports: false,
-                includeHtmlReports: false,
-                includeJsonReports: false,
-                includeVulnReports: false,
-                isAutoupdateDisabled: false,
-                outdir:'', scanpath: 'src',
-                skipOnScmChange: false,
-                skipOnUpstreamChange: false,
-                suppressionFile: '',
-                zipExtensions: ''
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'OWASP-DC'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
 
