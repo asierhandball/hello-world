@@ -13,7 +13,7 @@ pipeline {
                 '''
             }
         }
-        stage('Build v1') {
+        /* stage('Build v1') {
             steps {
                 build 'D_o_K_CI'
             }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 build 'Deploy_on_Kubernetes_CD'
             }
-        }
+        } */
         stage ('OWASP Dependency-Check Vulnerabilities') {
             steps {
                 dependencyCheck additionalArguments: ''' 
