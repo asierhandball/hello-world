@@ -1,18 +1,18 @@
 pipeline {
     agent any
-    tools {
+    /*tools {
         Maven "M2_HOME"
         Java "JAVA_HOME"
-    }
+    }*/
     stages {
-        stage ('Initialize') {
+        /*stage ('Initialize') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
             }
-        }
+        }*/
         stage('Build v1') {
             steps {
                 build 'D_o_K_CI'
