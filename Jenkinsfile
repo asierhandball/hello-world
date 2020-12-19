@@ -13,9 +13,9 @@ pipeline {
                 '''
             }
         }*/
-        stage('Build v1') {
+        stage('CI Phase') {
             steps {
-                build 'D_o_K_CI'
+                build 'Docker_Image_Control'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
                 
             }
