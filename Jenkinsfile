@@ -1,16 +1,18 @@
 pipeline {
-    agent {
-        docker {
-            image 'asaluena/simple-devops-image:latest'
-        }
+    agent any
+    tools {
+        maven "M2_HOME"
+        jdk "JAVA_HOME"
     }
     stages {
-        stage('Build') {
+        stage ('Initialize') {
             steps {
-                sh 'mvn -B -DskipTests clean verify checkstyle:checkstyle pmd:pmd findbugs:findbugs'
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
             }
         }
-        /*
         stage('Build v1') {
             steps {
                 build 'D_o_K_CI'
@@ -30,7 +32,7 @@ pipeline {
             steps {
                 build 'Deploy_on_Kubernetes_CD'
             }
-        }*/
+        }
         
         
         stage('Test') {
