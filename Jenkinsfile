@@ -28,9 +28,9 @@ pipeline {
                 anchore engineCredentialsId: '148601be-a3db-4b5a-b468-f25de3498565', engineRetries: '500', engineurl: 'http://172.31.13.28:8228/v1', name: 'anchore_images'
             }
         }
-        stage('Build v2') {
+        stage('CD_Phase') {
             steps {
-                build 'Deploy_on_Kubernetes_CD'
+                build 'K8s_Deploying'
             }
         }
         
